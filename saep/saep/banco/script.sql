@@ -1,0 +1,64 @@
+-- DROP DATABASE IF EXISTS clinica;
+-- CREATE DATABASE clinica;
+-- USE clinica;
+--
+-- CREATE TABLE usuarios (
+--     id INT AUTO_INCREMENT PRIMARY KEY,
+--     nome VARCHAR(100) NOT NULL,
+--     login VARCHAR(50) NOT NULL UNIQUE,
+--     senha VARCHAR(255) NOT NULL
+-- );
+--
+-- CREATE TABLE tutores (
+--     id INT AUTO_INCREMENT PRIMARY KEY,
+--     nome VARCHAR(100) NOT NULL,
+--     cpf VARCHAR(255) NOT NULL,
+--     telefone VARCHAR(20) NOT NULL
+-- );
+--
+-- CREATE TABLE pets (
+--     id INT AUTO_INCREMENT PRIMARY KEY,
+--     id_tutor INT NOT NULL,
+--     nome VARCHAR(100) NOT NULL,
+--     especie VARCHAR(50) NOT NULL,
+--     FOREIGN KEY (id_tutor) REFERENCES tutores(id)
+-- );
+--
+-- CREATE TABLE agendamentos (
+--     id INT AUTO_INCREMENT PRIMARY KEY,
+--     id_pet INT NOT NULL,
+--     data_agendamento DATE NOT NULL,
+--     FOREIGN KEY (id_pet) REFERENCES pets(id)
+-- );
+
+-- ============================================================
+-- CONFIGURAÇÃO DA CHAVE DE CRIPTOGRAFIA
+-- ============================================================
+-- SET @chave cria uma variável temporária no MySQL.
+-- Ela guarda a "senha mestra" (chave simétrica) usada para trancar (criptografar)
+-- e destrancar (descriptografar) dados sensíveis como o CPF (exigência da LGPD).
+--
+-- SET @chave = 'chave_secreta';
+--
+-- INSERT INTO usuarios (nome, login, senha) VALUES
+-- ('Mariana Silva', 'mariana', SHA2('123456', 256)),
+-- ('Carlos Mendes', 'carlos', SHA2('123456', 256)),
+-- ('Fernanda Costa', 'fernanda', SHA2('123456', 256));
+--
+-- INSERT INTO tutores (nome, cpf, telefone) VALUES
+-- ('João Oliveira', HEX(AES_ENCRYPT('12345678901', @chave)), '31998765432'),
+-- ('Ana Souza', HEX(AES_ENCRYPT('98765432100', @chave)), '31987654321'),
+-- ('Roberto Almeida', HEX(AES_ENCRYPT('45612378999', @chave)), '31991234567');
+--
+-- INSERT INTO pets (id_tutor, nome, especie) VALUES
+-- (1, 'Thor', 'Cachorro'),
+-- (2, 'Mia', 'Gato'),
+-- (3, 'Rex', 'Cachorro');
+--
+-- INSERT INTO agendamentos (id_pet, data_agendamento) VALUES
+-- (1, '2026-11-20'),
+-- (2, '2026-11-21'),
+-- (3, '2026-11-22');
+
+-- ESTE É APENAS UM EXEMPLO DE BANCO DE DADOS, APÓS A FINALIZAÇÃO APAGAR ESSE EXEMPLO
+-- FAZER O BANCO REAL AQUI EM BAIXO ↓
